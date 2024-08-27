@@ -3,16 +3,37 @@ import { useSelector } from 'react-redux';
 
 const Karta = () => {
     const data = useSelector(state => state.searchData);
-    console.log(data)
+    console.log(data);
 
-  return (
-    <Container>
-    <div className="w-full h-[300px] rounded-[20px] " >
-        <iframe className='w-full h-[300px] rounded-[10px]' src={`https://maps.google.com/maps?q=${data.location.name}%20Dates%10Products&amp;t=&amp;z=12&amp&output=embed`}></iframe>
-    </div>
+    if (!data || !data.location || !data.location.name) {
+        return (
+            <>
+                <div className="loader-container">
+                    <div className="loader">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </>
+        );
+    }
 
-  </Container>  
-  )
+    const locationName = encodeURIComponent(data.location.name);
+    
+    return (
+        <Container>
+            <div className="w-full h-[300px] rounded-[20px]">
+                <iframe
+                    className='w-full h-[300px] rounded-[10px]'
+                    src={`https://maps.google.com/maps?q=${locationName}&t=&z=12&output=embed`}
+                    frameBorder="0"
+                    allowFullScreen
+                    title="Google Maps"
+                ></iframe>
+            </div>
+        </Container>
+    );
 }
 
-export default Karta
+export default Karta;
