@@ -1,17 +1,12 @@
-import Banner from "./components/banner/Banner"
-import Header from "./components/header/Header";
-import Karta from "./components/Karta/Karta";
+
 import "./App.css";
-import Humiditi from "./components/humiditi/Humiditi";
+import TranslationComponent from "./components/Transilation/TransilationComponent";
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Banner/>
-      <Karta/>
-      <Humiditi/>
+      <TranslationComponent/>
       
     </>
   )

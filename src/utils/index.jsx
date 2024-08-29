@@ -1,9 +1,12 @@
-const Container = ({children}) => {
-  return (
-    <div className='container max-w-[1200px] mx-auto p-4 w-full'>
-        {children}
-    </div>
-  )
-}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
+import TranslationComponent from '../components/Transilation/TransilationComponent';
 
-export {Container}
+ReactDOM.render(
+  <Provider store={store}>
+    <TranslationComponent />
+  </Provider>,
+  document.getElementById('root')
+);
